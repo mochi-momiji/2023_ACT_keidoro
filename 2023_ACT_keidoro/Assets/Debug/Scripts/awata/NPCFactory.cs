@@ -7,6 +7,8 @@ public class NPCFactory : MonoBehaviour
     public GameObject rabbit3;
     public GameObject hunter;
 
+    GameObject Prefab;
+
     const int RABBIT_VALUE = 100;
     const int HUNTER_VALUE = 10;
     const float HORIZONTAL_LIMIT = 75.0f;
@@ -35,7 +37,22 @@ public class NPCFactory : MonoBehaviour
             float positionY = Random.Range(-VERTICAL_LIMIT, VERTICAL_LIMIT);
 
             rabbitPositions[index] = new Vector2(positionX, positionY);
-            Instantiate(rabbit1, rabbitPositions[index], Quaternion.identity);
+
+            float kinds = Random.Range(0, 3);
+
+            switch (kinds)
+            {
+                case 0:
+                    Prefab = rabbit1;
+                    break;
+                case 1:
+                    Prefab = rabbit2;
+                    break;
+                case 2:
+                    Prefab= rabbit3;
+                    break;
+            }
+            Instantiate(Prefab, rabbitPositions[index], Quaternion.identity);
         }
 
         for (int index = 0; index < hunterPositions.Length; index++)
