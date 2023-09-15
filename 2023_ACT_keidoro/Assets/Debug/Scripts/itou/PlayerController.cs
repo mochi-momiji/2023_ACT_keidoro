@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    const float SPEED = 4.0f;
+    private const float SPEED = 4.0f;
+    private const float BOOSTTIME = 5.0f; 
     private Rigidbody2D rigidBody = null;
     private Vector3 mousePos = Vector3.zero;
     private Vector3 currentPos = Vector3.zero;
     private Vector3 movePos = Vector3.zero;
     private Vector3 verocity = Vector3.zero;
+    public bool isBoost = false;
+    private float boostTimer = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,19 @@ public class PlayerController : MonoBehaviour
         currentPos = transform.position;
         movePos = mousePos - currentPos;
         movePos.Normalize();
-        verocity = movePos * SPEED;
+        if(isBoost)
+        {
+            verocity = movePos * SPEED * 2;
+            boostTimer += Time.deltaTime;
+            if( boostTimer > BOOSTTIME )
+            {
+                boostTimer = 0.0f;
+                isBoost = false;
+            }
+        }
+        else
+        {
+            verocity = movePos * SPEED;
+        }
     }
 }
