@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private const float SPEED = 4.0f;
-    private const float BOOSTTIME = 5.0f; 
+    private const float BOOSTTIME = 5.0f;
+    [SerializeField] private GameObject hitPointCon = null;
     private Rigidbody2D rigidBody = null;
     private Vector3 mousePos = Vector3.zero;
     private Vector3 currentPos = Vector3.zero;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 verocity = Vector3.zero;
     public bool isBoost = false;
     private float boostTimer = 0.0f;
+    private int hitPoint = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,23 @@ public class PlayerController : MonoBehaviour
         else
         {
             verocity = movePos * SPEED;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Arrow")
+        {
+            hitPoint--;
+            hitPointCon.GetComponent<HPController>().UpdateHitPointUI(hitPoint);
+        }
+        if(collision.gameObject.tag == "LifeUp")
+        {
+            hitPoint++;
+            if(hitPoint > 5)
+            {
+                hitPoint = 5;
+            }
+            hitPointCon.GetComponent<HPController>().UpdateHitPointUI(hitPoint);
         }
     }
 }

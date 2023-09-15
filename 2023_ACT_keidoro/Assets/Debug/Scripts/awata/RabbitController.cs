@@ -8,6 +8,7 @@ public class RabbitController : MonoBehaviour
     const float SPEED = 2.0f;       //移動スピード
 
     Rigidbody2D rigidBory;
+    [SerializeField]private GameObject ItemControllerObject = null;
 
     float Timer = 0.0f;     //方向転換までのカウント
 
@@ -35,9 +36,7 @@ public class RabbitController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //アイテム生成関数を取得・呼び出し
-            ItemController Item = GetComponent<ItemController>();
-            Item.DropItem(transform.position);
-
+            ItemControllerObject.GetComponent<ItemController>().DropItem(transform.position);
             Destroy(gameObject);
         }
         //ウサギ同士で衝突したら反発
