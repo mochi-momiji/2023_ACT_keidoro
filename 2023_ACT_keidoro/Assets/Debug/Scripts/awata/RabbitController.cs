@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ACT_RabbitContorller : MonoBehaviour
+public class RabbitController : MonoBehaviour
 {
     const int MIN_ROTATION = 0;
     const int MAX_ROTATION = 360;
@@ -34,9 +34,11 @@ public class ACT_RabbitContorller : MonoBehaviour
         //Playerに捕まると破壊
         if (collision.gameObject.tag == "Player")
         {
+            //アイテム生成関数を取得・呼び出し
+            ItemController Item = GetComponent<ItemController>();
+            Item.DropItem(transform.position);
+
             Destroy(gameObject);
-
-
         }
         //ウサギ同士で衝突したら反発
         if (collision.gameObject.tag == "Target")

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ACT_ArrowController : MonoBehaviour
+public class ArrowController : MonoBehaviour
 {
     const float SPEED = 8.0f;
 

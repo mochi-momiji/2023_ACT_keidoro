@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ACT_HunterController : MonoBehaviour
+public class HunterController : MonoBehaviour
 {
     const int MIN_ROTATION = 0;
     const int MAX_ROTATION = 360;
@@ -72,6 +72,6 @@ public class ACT_HunterController : MonoBehaviour
     void CreateArrow()
     {
         GameObject Arrow = Instantiate(arrowPrefab, transform.position, Quaternion.EulerRotation(rigidBory.velocity));
-        Arrow.GetComponent<ACT_ArrowController>().Movement(transform.position, (Vector2)rigidBory.velocity);
+        Arrow.GetComponent<ArrowController>().Movement(transform.position, (Vector2)rigidBory.velocity);
     }
 }

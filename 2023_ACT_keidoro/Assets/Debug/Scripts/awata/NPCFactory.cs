@@ -10,7 +10,7 @@ public class NPCFactory : MonoBehaviour
     const int RABBIT_VALUE = 100;
     const int HUNTER_VALUE = 10;
     const float HORIZONTAL_LIMIT = 75.0f;
-    const float VERTICAL_LIMIT = 30.0f;
+    const float VERTICAL_LIMIT = 108.0f;
 
     // Start is called before the first frame update
     void Start()
