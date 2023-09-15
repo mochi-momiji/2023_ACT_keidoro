@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class RabbitController : MonoBehaviour
 {
-    const int MIN_ROTATION = 0;
-    const int MAX_ROTATION = 360;
-    const float COOL_TIME = 2.0f;
-    const float SPEED = 2.0f;
+    const int MIN_ROTATION = 0;     //角度の下限
+    const int MAX_ROTATION = 360;   //角度の上限
+    const float COOL_TIME = 2.0f;   //方向転換の間隔
+    const float SPEED = 2.0f;       //移動スピード
 
     Rigidbody2D rigidBory;
 
-    float Timer = 0.0f;
+    float Timer = 0.0f;     //方向転換までのカウント
 
     // Start is called before the first frame update
     void Start()
